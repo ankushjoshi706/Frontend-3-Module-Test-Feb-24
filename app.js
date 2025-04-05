@@ -7,6 +7,17 @@ const sortByMktCap = document.getElementById('sort1');
 const sortByPercentage = document.getElementById('sort2');
 const loader = document.getElementById('loader'); 
 
+
+function fetchWithThen() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      coinsData = data;
+      renderTable(data);
+    })
+    .catch(err => console.error("Error fetching data with .then:", err));
+}
+
 // Function to fetch data
 async function fetchedData() {
     try {
